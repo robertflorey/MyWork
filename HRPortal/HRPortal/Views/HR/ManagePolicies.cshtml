@@ -1,0 +1,39 @@
+﻿@model IEnumerable<IGrouping<string, HRPortal.Models.Policy>>
+@{
+    ViewBag.Title = "ManagePolicies";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Manage Policies</h3>
+        @Html.ActionLink("Add Policy", "AddPolicy", "HR", null, new { @class = "btn btn-primary" })    
+        <form class="form-inline">
+           
+                @foreach (IGrouping<string, HRPortal.Models.Policy> policies in Model)
+                {
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="policyMenu"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="background-color:maroon;">
+                                @policies.Key
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="policyMenu">
+                                @foreach (var policy in policies)
+                                {
+                                    <li>@policy.PolicyTitle @Html.ActionLink("delete", "DeletePolicy", "HR", new {policyId = policy.PolicyId }, null)</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        
+    </div>
+</div>
+

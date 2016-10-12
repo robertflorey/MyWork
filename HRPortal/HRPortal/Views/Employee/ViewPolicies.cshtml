@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "ViewPolicies";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>View Policies</h3>
+        <form class="form-inline">
+
+            @foreach (IGrouping<string, HRPortal.Models.Policy> policies in Model)
+            {
+                <div class="form-group">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="policyMenu"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            @policies.Key
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="policyMenu">
+                            @foreach (var policy in policies)
+                            {
+                                <li>@Html.ActionLink(policy.PolicyTitle, "ViewPolicy", new { policyId = policy.PolicyId })</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+
+        </form>
+    </div>
+</div>
+

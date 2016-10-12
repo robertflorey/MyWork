@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "SorryCategoryExists";
+}
+
+<div class="row" , style="background-color:red">
+    <div class="col-xs-12">
+        <h2>Category must have a name or</h2>
+        <h2>That Category Already Exists!!!</h2>
+        @Html.ActionLink("Return to Manage Categories", "ManageCategories", "HR")
+        @Html.ActionLink("Try to add Category again", "AddCategory", "HR")
+    </div>
+</div>

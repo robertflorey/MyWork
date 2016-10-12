@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Sorry";
+}
+
+<div class="row", style="background-color:red">
+    <div class="col-xs-12">
+        <h2>A Policy already exists in that category by that title!</h2>
+        @Html.ActionLink("Return to Manage Policies", "ManagePolicies", "HR")
+        @Html.ActionLink("Try to add Policy again", "AddPolicy", "HR")
+    </div>
+</div>
+ 

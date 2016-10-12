@@ -1,0 +1,41 @@
+﻿@model HRPortal.Models.Applicant
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Thank You, @Model.Name</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>We appreciate your interest in a position with our company.</p>
+
+                <p>We will send directions with the next steps in the application process to @Model.Email.</p>
+                @Html.ActionLink("Return to Home Page", "Index", "Home")
+            </div>
+        </div>
+
+    </div>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery-validate-defaults.js"></script>
+    <script src="~/scripts/applicationValidation.js"></script>
+</body>
+</html>
+
+

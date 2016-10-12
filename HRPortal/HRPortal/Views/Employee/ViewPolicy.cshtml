@@ -1,0 +1,22 @@
+﻿@model HRPortal.Models.Policy
+@{
+    ViewBag.Title = "ViewPolicy";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>View Policy</h3>
+        @Html.ActionLink("Return to Policies", "ViewPolicies", "Employee")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            <p>Category: @Model.Category.CategoryName</p>
+            <p>Policy Title: @Model.PolicyTitle</p>
+            <p>Policy Content: @Model.PolicyContent</p>
+        }
+    </div>
+</div>
+
