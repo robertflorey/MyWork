@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DVDCollection.Models.DVD>
+@{
+    ViewBag.Title = "Search";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Search Result</h3>
+        @Html.ActionLink("Add DVD", "AddDVD", "DVD", null, new { @class = "btn btn-primary" })
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Director</th>
+                    <th>Release Date</th>
+                    <th>Available?</th>
+                    <th>Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dvd in Model)
+                {
+                    <tr>
+                        <td>@Html.ActionLink(dvd.Title, "ViewDVD", new { DVDId = dvd.DVDId })</td>
+                        <td>@dvd.DirectorsName</td>
+                        <td>@dvd.ReleaseDate</td>
+                        @if (dvd.Available == true)
+                        {
+                            <td>yes</td>
+                        }
+                        else
+                        {
+                            <td>no</td>
+                        }
+                        <td>
+                            @Html.ActionLink("Edit", "EditDVD", "DVD", new { DVDId = dvd.DVDId }, null) |
+                        @Html.ActionLink("Delete", "DeleteDVD", "DVD", new { DVDId = dvd.DVDId }, null)
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

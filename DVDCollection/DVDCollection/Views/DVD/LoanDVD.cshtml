@@ -1,0 +1,36 @@
+﻿@model DVDCollection.Models.DVDVM
+
+@{
+    ViewBag.Title = "LoanDVD";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-9">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Add Policy</h3>
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="col-xs-12 col-sm-7">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">Policy Details</h4>
+                                </div>
+                                <div class="form-group">
+                                    <label>Borrower:</label>
+                                    @Html.DropDownListFor(p => p.DVD.BorrowerId, Model.BorrowerItems, new { @class = "form-control" })
+                                </div>
+                                <div class="panel-body">
+                                    @Html.HiddenFor(d =>d.DVD.DVDId)
+                                    <button class="btn btn-primary" style="background-color:green">Loan</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

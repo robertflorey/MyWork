@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DVDCollection.Models.Borrower>
+@{
+    ViewBag.Title = "Borrowers";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>DVDs</h3>
+        @Html.ActionLink("Add Borrower", "AddBorrower", "Borrower", null, new { @class = "btn btn-primary" })
+        <form method="post" action="Borrowers">
+            
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Check Out Date</th>
+                        <th>Due Date</th>
+                        <th>Current DVD Id</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var borrower in Model)
+                    {
+                        <tr>
+                            <td>@borrower.BorrowerId</td>
+                            <td>@borrower.Name</td>
+                            <td>@borrower.CheckOutDate</td>
+                            <td>@borrower.CheckInDate</td>
+                            @if (borrower.CheckOutDate.HasValue && borrower.CheckInDate > DateTime.Now)
+                            {
+                                <td>@Html.ActionLink(borrower.DVDId.ToString(), "ViewDVD", "DVD", new { DVDId = borrower.DVDId }, null)</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

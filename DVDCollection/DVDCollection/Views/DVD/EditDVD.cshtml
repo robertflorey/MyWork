@@ -1,0 +1,91 @@
+﻿@model DVDCollection.Models.DVDVM
+@{
+    ViewBag.Title = "EditDVD";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-9">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Edit DVD</h3>
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary()
+                        <div class="col-xs-12 col-sm-7">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">DVD Details</h4>
+                                </div>
+                                <div class="form-group">
+                                    <label>Title:</label>
+                                    @Html.TextBoxFor(d => d.DVD.Title, new { @class = "form-control" })
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label>Release Date:</label>
+                                        @Html.TextBoxFor(d => d.DVD.ReleaseDate, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>MPAARating:</label>
+                                        @Html.DropDownListFor(d => d.DVD.MPAARating, new List<SelectListItem>
+                                            {
+                                            new SelectListItem() {Text="R",Value="R"},
+                                            new SelectListItem() {Text="PG-13",Value="PG-13" },
+                                            new SelectListItem() {Text="PG",Value="PG" },
+                                            new SelectListItem() {Text="G",Value="G" },
+                                            new SelectListItem() {Text="No Rating",Value="No Rating" }
+                                        }, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Studio:</label>
+                                        @Html.TextBoxFor(d => d.DVD.Studio, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Directors Name:</label>
+                                        @Html.TextBoxFor(d => d.DVD.DirectorsName, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Actors Name:</label>
+                                        @Html.TextBoxFor(d => d.DVD.ActorsName, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>User Rating:</label>
+                                        @Html.DropDownListFor(d => d.DVD.UserRating, new List<SelectListItem> {
+                                   new SelectListItem() {Text="Great",Value="Great"},
+                                   new SelectListItem() {Text="Good",Value="Good" },
+                                   new SelectListItem() {Text="Ok",Value="Ok" },
+                                   new SelectListItem() {Text="bad",Value="bad" },
+                                   new SelectListItem() {Text="Unwatchable",Value="Unwatchable" }
+                                   }, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>User Notes:</label>
+                                        @Html.TextBoxFor(d => d.DVD.UserNotes, new { @class = "form-control" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Available</label>
+                                        @Html.DropDownListFor(p => p.DVD.Available, new SelectList(
+        new[]
+        {
+            new { Value = "true", Text = "Yes" },
+            new { Value = "false", Text = "No" },
+        },
+        "Value",
+        "Text", new { @class = "form-control" }))
+                                    </div>
+                                    <button class="btn btn-primary" style="background-color:green">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+

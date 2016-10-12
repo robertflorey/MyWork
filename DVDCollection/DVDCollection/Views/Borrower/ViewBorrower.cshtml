@@ -1,0 +1,27 @@
+﻿@model DVDCollection.Models.Borrower
+
+@{
+    ViewBag.Title = "ViewBorrower";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Return Movie</h3>
+        @Html.ActionLink("Return to Movie List", "ViewDVDs", "DVD")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(b => b.BorrowerId)
+            @Html.HiddenFor(b => b.DVDId)
+            <p>Borrower Name: @Model.Name</p>
+            <p>Check Out Date: @Model.CheckOutDate</p>
+            <p>Due Date: @Model.CheckInDate</p>
+            <p>Return Movie?</p>
+            <button type="submit" class="btn btn-sm btn-danger">Return</button>
+        }
+    </div>
+</div>
+

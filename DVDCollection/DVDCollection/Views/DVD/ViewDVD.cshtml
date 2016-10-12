@@ -1,0 +1,68 @@
+﻿@model DVDCollection.Models.DVD
+@{
+    ViewBag.Title = "ViewDVD";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h3>View Policy</h3>
+        @Html.ActionLink("Return to DVD List", "ViewDVDs", "DVD")
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        @using (Html.BeginForm())
+        {
+            <table  class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Release Date</th>
+                        <th>MPAA Rating</th>
+                        <th>Studio</th>
+                        <th>Director's Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.Title</td>
+                        <td>@Model.ReleaseDate</td>
+                        <td>@Model.MPAARating</td>
+                        <td>@Model.Studio</td>
+                        <td>@Model.DirectorsName</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>Actor's Name</th>
+                        <th>User Rating</th>
+                        <th>User Notes</th>
+                        <th>Available?</th>
+                        <th>Borrower</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.ActorsName</td>
+                        <td>@Model.UserRating</td>
+                        <td>@Model.UserNotes</td>
+                        @if (Model.Available == true)
+                        {
+                            <td>Yes</td>
+                            <td>@Html.ActionLink("Loan","LoanDVD","DVD", new { DVDId = Model.DVDId }, null)</td>
+                        }
+                        else
+                        {
+                            <td>No</td>
+                            <td>@Html.ActionLink(Model.BorrowerId.ToString(),"ViewBorrower", "Borrower",new {BorrowerId=Model.BorrowerId }, null)</td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        }
+    </div>
+
+</div>
+

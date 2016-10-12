@@ -1,0 +1,34 @@
+﻿@model DVDCollection.Models.Borrower
+@{
+    ViewBag.Title = "AddBorrower";
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-9">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Add Borrower</h3>
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="col-xs-12 col-sm-7">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">Borrower</h4>
+                                </div>
+                                <div class="form-group">
+                                    <label>Name:</label>
+                                    @Html.TextBoxFor(d => d.Name, new { @class = "form-control" })
+                                </div>
+                                <div class="panel-body">
+                                    <button class="btn btn-primary" style="background-color:green">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
